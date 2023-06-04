@@ -1,0 +1,59 @@
+ALGORITHM problem1
+VAR
+    E1,E2 : ARRAY_OF INTEGER[length];
+    somme,i,j:INTEGER;
+    exists:BOOLEAN
+BEGIN
+
+    //remplissage des 2 ensembes
+
+    FOR i FROM 0 TO length-1  DO
+        write("donner 1er ensemble " )
+        read(E1[i]);
+    END_FOR
+
+    FOR j FROM 0 TO length-1  DO
+        write("donner 2eme ensemble " )
+        read(E2[j]);
+    END_FOR
+
+
+    i,j,somme:=0;
+
+    //Comparaison E1 avec E2 
+ 
+    FOR i FROM 0 TO E1.length DO 
+        exists := false;
+
+        FOR j FROM 0 TO E2.length DO
+            IF E1[i] = E2[j] THEN 
+                exists := true;
+            END_IF
+        END_FOR
+
+        IF exists:=false THEN 
+            somme := somme + E1[i];
+        END_IF
+
+    END_FOR
+     
+    //Comparaison E2 avec E1 
+
+    FOR i FROM 0 TO E2.length DO 
+        exists := false;
+
+        FOR j FROM 0 TO E2.length DO
+            IF E2[i] = E1[j] THEN 
+                exists := true;
+            END_IF
+        END_FOR
+
+        IF exists:=false THEN 
+            somme := somme + E1[i];
+        END_IF
+
+    END_FOR
+
+    Write("la somme est", somme);
+
+END

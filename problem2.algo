@@ -1,0 +1,113 @@
+//--1-- procedure pour calculer le produit scalaire de deux vecteurs
+
+PROCEDURE dot_product(V1,V2 : FLOAT[length];)
+VAR
+    ps:FLOAT;
+    i:INTEGER;
+BEGIN
+    FOR i FROM 0 TO length-1  DO
+        write("donner element " i+1 , "de vecteur V1")
+        read(V1[i]);
+        write("donner element " i+1 , "de vecteur V2")
+        read(V2[i]);
+    END_FOR
+
+    ps:=0;
+
+    IF (V1.length = V2.length) THEN
+    FOR i FROM 0 TO length-1  DO
+        ps:=ps+V1[i]*V2[i];
+    END_FOR
+    END_IF
+    write("le produit scalaire de v1 et v2 est",ps);
+END
+
+//--2-- Algorithm principal
+
+ALGORITHM problem2
+VAR
+    V1,V2:ARRAY_OF FLOAT[length]
+    ps,i:INTEGER :=0;
+    n1,n2:INTEGER;
+BEGIN
+
+    Write("donner V1");
+    Read(n1);
+    FOR i FROM 0 TO n1 DO
+        Read(V1[i])
+    END_FOR
+
+    Write("donner V2");
+    Read(n2);
+    FOR i FROM 0 TO n2 DO
+        Read(V2[i])
+    END_FOR
+
+dot_product(V1,V2,ps);
+    IF (ps = 0) THEN
+        Write("V1 and V2 are orthogonal");
+    ELSE
+        Write("V1 and V2 are not orthogonal");
+    END_IF
+
+END
+
+
+
+//--3-- Algorithm avec fonction
+//notre fonction
+FUNCTION dot_product(V1,V2 : FLOAT[length];):FLOAT
+VAR
+    ps:FLOAT;
+    i:INTEGER;
+BEGIN
+    FOR i FROM 0 TO length-1  DO
+        write("donner element " i+1 , "de vecteur V1")
+        read(V1[i]);
+        write("donner element " i+1 , "de vecteur V2")
+        read(V2[i]);
+    END_FOR
+
+    ps:=0;
+
+    IF (V1.length = V2.length) THEN
+    FOR i FROM 0 TO length-1  DO
+        ps:=ps+V1[i]*V2[i];
+    END_FOR
+    RETURN ps;
+    END_IF
+    write("le produit scalaire de v1 et v2 est",ps);
+END
+
+//algorithm principal
+
+ALGORITHM problem2
+VAR
+    V1,V2:ARRAY_OF FLOAT[length]
+    ps,i:INTEGER :=0;
+    n1,n2:INTEGER;
+BEGIN
+
+    Write("donner V1");
+    Read(n1);
+    FOR i FROM 0 TO n1 DO
+        Read(V1[i])
+    END_FOR
+
+    Write("donner V2");
+    Read(n2);
+    FOR i FROM 0 TO n2 DO
+        Read(V2[i])
+    END_FOR
+
+     ps := dot_product(V1,V2);
+    IF (ps = 0) THEN
+        Write("V1 and V2 are orthogonal");
+    ELSE
+        Write("V1 and V2 are not orthogonal");
+    END_IF
+
+END
+
+
+
